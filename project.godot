@@ -13,7 +13,6 @@ config_version=5
 config/name="tappy-plane"
 run/main_scene="res://scenses/main/main.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
 
 [autoload]
 
@@ -24,8 +23,8 @@ SignalManager="*res://singletons/signal_manager.gd"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
 [input]
