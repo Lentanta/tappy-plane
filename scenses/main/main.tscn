@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://7vqf8vf67hcx"]
+
+[ext_resource type="Script" path="res://scenses/main/main.gd" id="1_2f5xn"]
+[ext_resource type="Texture2D" uid="uid://bcnbpbu3s5tsv" path="res://assets/background/rocks_2.png" id="1_onh5p"]
+[ext_resource type="PackedScene" uid="uid://cu25bedcnyui" path="res://scenses/plane.tscn" id="2_xou2e"]
+[ext_resource type="PackedScene" uid="uid://b6gqhy6tagrdu" path="res://scenses/pipes/Pipes.tscn" id="3_2t10i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgxsv"]
+size = Vector2(722, 52)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_2f5xn")
+pipes_scene = ExtResource("3_2t10i")
+
+[node name="Rocks2" type="Sprite2D" parent="."]
+position = Vector2(299.222, 640)
+scale = Vector2(1.18148, 1.18148)
+texture = ExtResource("1_onh5p")
+
+[node name="Plane" parent="." instance=ExtResource("2_xou2e")]
+position = Vector2(73, 641)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(360, -25)
+shape = SubResource("RectangleShape2D_jgxsv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(15, 1275)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(345, 0)
+shape = SubResource("RectangleShape2D_jgxsv")
+
+[node name="SpawnUpper" type="Marker2D" parent="."]
+position = Vector2(800, 600)
+
+[node name="SpawnLower" type="Marker2D" parent="."]
+position = Vector2(800, 710)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
